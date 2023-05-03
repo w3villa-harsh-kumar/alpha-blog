@@ -73,7 +73,18 @@ OR
 you can rollback the migration using the rails db:rollback command and then run the migration again using the rails db:migrate command.(This is not recommended way to add a column to an existing table as it will delete all the data in the table.)
 
 ```
-
+```
+Step:4 Set the article routes in the config/routes.rb file.
+```
+```
+Step:5 Create a ArticlesController class in the app/controllers/articles_controller.rb file.
+```
+```
+Step:6 Create the actions in the ArticlesController class.
+```
+```
+Step:7 Create the views in the app/views/articles directory.
+```
 
 ### 6. How to create a model for a resource in Rails?
 To create a model for a resource in Rails, you need to run the following command:
@@ -108,3 +119,84 @@ For example, to create a database migration for the resource article, you need t
 $ rails generate migration CreateArticles
 ```
 
+### 10. How to use Rails console to interact with a resource?
+To use Rails console to interact with a resource, you need to run the following command:
+```
+$ rails console
+```
+This will open the Rails console. You can use the Rails console to create, read, update and destroy items for a resource.
+**Create**
+```
+> article = Article.new(title: "Hello World", text: "This is my first article.")
+> article.save
+```
+**Read**
+```
+> Article.all
+> Article.find(1)
+> Article.find_by(title: "Hello World")
+> Article.where(title: "Hello World")
+> Article.first
+> Article.last
+> Article.find_by_id(1)
+```
+**Update**
+```
+> article = Article.find(1)
+> article.title = "Hello World"
+> article.save
+```
+**Destroy**
+```
+> article = Article.find(1)
+> article.destroy
+```
+
+### 11. What are validations in Rails?
+Validations are used to ensure that the data entered by the user is valid. For example, if you want to ensure that the title of an article is unique, you can use the validates_uniqueness_of method in the Article model.
+```
+class Article < ApplicationRecord
+  validates_uniqueness_of :title, presence: true
+end
+```
+This will ensure that the title of an article is unique and it is not blank.
+
+**Link for more information about validations in Rails:**
+https://guides.rubyonrails.org/active_record_validations.html
+
+### 12. how to see the errors in Rails?
+To see the errors in Rails, you need to run the following command:
+```
+$ rails console
+```
+This will open the Rails console. You can use the Rails console to see the errors in Rails.
+```
+> article = Article.new(title: "Hello World", text: "This is my first article.")
+> article.save
+> article.errors
+```
+This will show the errors in Rails.
+
+### 13. how to see the errors in Rails with full messages?
+To see the errors in Rails with full messages, you need to run the following command:
+```
+$ rails console
+```
+This will open the Rails console. You can use the Rails console to see the errors in Rails with full messages.
+```
+> article = Article.new(title: "Hello World", text: "This is my first article.")
+> article.save
+> article.errors.full_messages
+```
+This will show the errors in Rails with full messages.
+
+### 14. How to get the data from url in Rails?
+To get the data from url in Rails, you need to use the params hash. For example, if you want to get the id of an article from the url, you can use the params[:id] method.
+```
+class ArticlesController < ApplicationController
+  def show
+    @article = Article.find(params[:id])
+  end
+end
+```
+This will get the id of an article from the url and assign it to the @article variable. 

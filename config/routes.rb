@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   # Defines the about path route ("/about")
   get "/about", to: "pages#about"
+
+  # Defines the articles path route ("/articles")
+  resources :articles, only: [:show]
 end
