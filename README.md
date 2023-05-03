@@ -73,7 +73,6 @@ OR
 you can rollback the migration using the rails db:rollback command and then run the migration again using the rails db:migrate command.(This is not recommended way to add a column to an existing table as it will delete all the data in the table.)
 
 ```
-```
 
 
 ### 6. How to create a model for a resource in Rails?
