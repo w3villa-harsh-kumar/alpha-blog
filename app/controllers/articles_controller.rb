@@ -71,7 +71,13 @@ class ArticlesController < ApplicationController
     private
 
         def get_article_by_id
-            @article = Article.find(params[:id])
+            result = Article.exists?(params[:id])
+            if result
+                @article = Article.find(params[:id])
+            else
+                flash[:alert] = "Article with id #{params[:id]} does not exist."
+                redirect_to articles_path
+            end
         end
 
         def article_params

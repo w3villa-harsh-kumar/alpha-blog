@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+.home-left-container {
+  width: 60%;
+}
+
+.home-right-container {
+  width: 40%;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .home-left-container {
+    width: 100%;
+  }
+  .home-right-container {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}

@@ -1,4 +1,9 @@
 <h1>Welcome to the About Page</h1>
 
-<%= link_to 'List of all Articles', articles_path %> | 
-<%= link_to 'Home Page', root_path %>
+<div class="text"> 
+    <p> This is the about page for the Alpha Blog application. </p>
+</div>
+<div class="mt-4 d-flex gap-2 flex-column flex-md-row flex-lg-row" >
+<%= link_to 'Create a new Article', new_article_path, class: "btn btn-primary" %>
+<%= link_to 'List of all Articles', articles_path, class: "btn btn-primary" %>
+</div>
