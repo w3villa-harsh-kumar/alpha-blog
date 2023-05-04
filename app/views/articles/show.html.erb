@@ -9,3 +9,15 @@
     <strong>Description:</strong>
     <%= @article.description %>
 </p>
+
+<p>
+    <strong>Author:</strong>
+    <%= @article.author %>
+</p>
+
+<div style="display: flex; gap:10px;">
+    <%= link_to 'Edit', edit_article_path(@article) %>
+    <td><%= button_to 'Delete', article_path(@article), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+</div>
+
+<%= link_to 'Back to all Articles', articles_path %>

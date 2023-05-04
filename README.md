@@ -200,3 +200,4 @@ class ArticlesController < ApplicationController
 end
 ```
 This will get the id of an article from the url and assign it to the @article variable. 
+
