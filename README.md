@@ -201,3 +201,170 @@ end
 ```
 This will get the id of an article from the url and assign it to the @article variable. 
 
+### 15. How to apply the CRUD operations on a resource in Rails?
+To apply the CRUD operations on a resource in Rails, you need to create a controller for the resource and define the actions in the controller. For example, to apply the CRUD operations on the article resource, you need to create a controller called ArticlesController and define the actions in the controller.
+```
+class ArticlesController < ApplicationController
+  def index
+    @articles = Article.all
+  end
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
+  def new
+    @article = Article.new
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def create
+    @article = Article.new(article_params)
+
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
+  end
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
+end
+```
+This will create a controller for the article resource and define the actions in the controller.
+
+### 16. How to create a form for a resource in Rails?
+To create a form for a resource in Rails, you need to create a file with the name of the action in the app/views/<controller_name> directory. For example, to create a form for the new action of the articles controller, you need to create a file called new.html.erb in the app/views/articles directory.
+```
+<%= form_with model: @article, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+```
+
+### 17. How to create a form for a resource in Rails with validations?
+To create a form for a resource in Rails with validations, you need to create a file with the name of the action in the app/views/<controller_name> directory. For example, to create a form for the new action of the articles controller, you need to create a file called new.html.erb in the app/views/articles directory.
+```
+<%= form_with model: @article, local: true do |form| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+```
+
+### 18. How to redirect to a page in Rails?
+To redirect to a page in Rails, you need to use the redirect_to method. For example, if you want to redirect to the articles index page, you can use the following code:
+```
+redirect_to articles_path
+```
+This will redirect to the articles index page.
+
+### 19. How to make _path variable in Rails?
+To make _path variable in Rails, you need to use the _path method. For example, if you want to make a variable called articles_path, you can use the following code:
+```
+articles_path = "/articles"
+edit_article_path = "/articles/:id/edit"
+root_path = "/"
+```
+This will make the articles_path variable.
+
+### 20. How to make _url variable in Rails?
+To make _url variable in Rails, you need to use the _url method. For example, if you want to make a variable called articles_url, you can use the following code:
+```
+articles_url = "http://localhost:3000/articles"
+edit_article_url = "http://localhost:3000/articles/:id/edit"
+root_url = "http://localhost:3000/"
+```
+This will make the articles_url variable.
+
+### 21. How to make a link with custom text and custom class in Rails?
+A. To make a link with custom text in Rails, you need to use the link_to method. For example, if you want to make a link with the text "Hello World", you can use the following code:
+```
+<%= link_to "Hello World", articles_path %>
+```
+This will make a link with the text "Hello World".
+
+B. To make a link with custom class in Rails, you need to use the link_to method. For example, if you want to make a link with the class "btn btn-primary", you can use the following code:
+```
+<%= link_to "Hello World", articles_path, class: "btn btn-primary" %>
+```
+This will make a link with the class "btn btn-primary".
+
+### 22. How to make reduce the repetition of code in Rails?
+To reduce the repetition of code in Rails, you need to use the partials. For example, if you want to reduce the repetition of code in the articles index page, you can use the following code:
+```
+<%= render partial: "article", collection: @articles %>
+```
+This will reduce the repetition of code in the articles index page.
+
+### 23. How to make a partial in Rails?
+To make a partial in Rails, you need to create a file with the name of the partial in the app/views/<controller_name> directory. For example, to make a partial called _article.html.erb in the app/views/articles directory, you need to create a file called _article.html.erb in the app/views/articles directory.
+```
+<%= link_to article.title, article_path(article) %>
+```
+
+### 24. How to make a partial in Rails with a local variable?
+To make a partial in Rails with a local variable, you need to create a file with the name of the partial in the app/views/<controller_name> directory. For example, to make a partial called _article.html.erb in the app/views/articles directory, you need to create a file called _article.html.erb in the app/views/articles directory.
+```
+<%= link_to article.title, article_path(article) %>
+```
+
+### 25. what is DRY in Rails?
+DRY stands for Don't Repeat Yourself. It is a principle of software development that states that "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system". In Rails, it means that you should not repeat yourself in your code. For example, if you have a piece of code that is repeated in multiple places, you should extract it into a method or a partial.
+  
