@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+    before_action :get_article_by_id, only: [:show, :edit, :update, :destroy]
+    
 
     def show
         # debugger
-        @article = Article.find(params[:id])
     end
 
     def index
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
         #     "description" => "My article description"
         # }
 
-        @article = Article.new(params[:article].permit(:title, :description, :author))
+        @article = Article.new(article_params)
         result = @article.save
         if result
             #flash is a hash that looks like this and is used to display messages to the user this message is shown in app/views/layouts/application.html.erb
@@ -45,13 +46,11 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])
     end
 
     def update
-        @article = Article.find(params[:id])
 
-        result = @article.update(params[:article].permit(:title, :description, :author))
+        result = @article.update(article_params)
         if result
             flash[:notice] = "Article was updated successfully."
             redirect_to @article
@@ -64,9 +63,18 @@ class ArticlesController < ApplicationController
     end
     
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         flash[:notice] = "Article was deleted successfully."
         redirect_to articles_path
     end
+
+    private
+
+        def get_article_by_id
+            @article = Article.find(params[:id])
+        end
+
+        def article_params
+            params.require(:article).permit(:title, :description, :author)
+        end
 end
