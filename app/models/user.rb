@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 
     # Associations
     has_many :articles
+
+    # Password encryption
+    has_secure_password #adds password_digest column to db and allows us to save a securely hashed password_digest attribute to the database
 end
