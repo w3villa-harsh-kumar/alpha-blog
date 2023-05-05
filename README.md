@@ -478,3 +478,15 @@ end
 
 **References**
 https://guides.rubyonrails.org/association_basics.html
+
+### 28. Steps to add association in Rails?
+To add association in Rails, you need to add the following code to the model:
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  belongs_to :user
+end
+```
