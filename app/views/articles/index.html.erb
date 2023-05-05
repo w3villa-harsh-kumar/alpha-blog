@@ -2,6 +2,7 @@
 <% if @articles.empty? %>
   <p>There are no articles yet. Create one!</p>
 <% end %>
+
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
   <% @articles.each do |article| %>
     <div class="col">
