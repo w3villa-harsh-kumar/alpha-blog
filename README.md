@@ -18,8 +18,13 @@ $ rails generate scaffold <resource_name> <attribute_name>:<data_type> <attribut
 ```
 For example, to create a resource called Article with the attributes title and text, you need to run the following command:
 ```
-$ rails generate scaffold Article title:string text:text
+$ rails generate scaffold Article title:string text:text 
 ```
+After running the above command, you need to run the following command to run the migration:
+``` 
+$ rails db:migrate
+```
+The above command will create the table for the resource in the database.
 
 ### 4. Naming Conventions for Resources in Rails
 The naming conventions for resources in Rails are as follows:
@@ -368,3 +373,108 @@ To make a partial in Rails with a local variable, you need to create a file with
 ### 25. what is DRY in Rails?
 DRY stands for Don't Repeat Yourself. It is a principle of software development that states that "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system". In Rails, it means that you should not repeat yourself in your code. For example, if you have a piece of code that is repeated in multiple places, you should extract it into a method or a partial.
   
+### 26. what is association in Rails?
+Association is a way to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a has_many :articles to the User model and a belongs_to :user to the Article model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  belongs_to :user
+end
+```
+
+### 27. How many types of associations are there in Rails?
+There are four types of associations in Rails:
+1. belongs_to
+2. has_one
+3. has_many
+4. has_and_belongs_to_many
+
+**belongs_to**
+belongs_to is used to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a belongs_to :user to the Article model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  belongs_to :user
+end
+```
+Other examples:
+-> User and Post Example
+```
+class User < ApplicationRecord
+  has_many :posts
+end
+
+class Post < ApplicationRecord
+  belongs_to :user
+end
+```
+-> User and Comment Example
+```
+class User < ApplicationRecord
+  has_many :comments
+end
+
+class Comment < ApplicationRecord
+  belongs_to :user
+end
+```
+-> User and Like Example
+```
+class User < ApplicationRecord
+  has_many :likes
+end
+
+class Like < ApplicationRecord
+  belongs_to :user
+end
+```
+
+**has_one**
+has_one is used to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a has_one :user to the Article model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  has_one :user
+end
+```
+
+**has_many**
+has_many is used to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a has_many :articles to the User model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  belongs_to :user
+end
+```
+
+**has_and_belongs_to_many**
+has_and_belongs_to_many is used to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a has_and_belongs_to_many :users to the Article model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :articles
+end
+
+class Article < ApplicationRecord
+  has_and_belongs_to_many :users
+end
+```
+
+**References**
+https://guides.rubyonrails.org/association_basics.html
