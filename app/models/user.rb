@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 
     # Associations
     has_many :articles
+
+    # Password encryption
+    has_secure_password
 end
