@@ -1,0 +1,30 @@
+<%= render "shared/errors", data: @user %>
+
+<%= form_with(model:@user, local: true, class: "my-form") do |form| %>
+
+  <div class="email-input">
+    <span class="material-icons-round icon-size"> person_outline </span>
+    <span id="seperator"></span>
+    <div class="input-container">
+      <p><%= form.label :username, class: "sub-title" %></p>
+      <%= form.text_field :username, class: "username" %>
+    </div>
+  </div>
+  <div class="email-input">
+    <span class="material-icons-round icon-size"> mail_outline </span>
+    <span id="seperator"></span>
+    <div class="input-container">
+      <p><%= form.label :email, class: "sub-title" %></p>
+      <%= form.email_field :email, class: "email" %>
+    </div>
+  </div>
+  <div class="email-input">
+    <span class="material-icons-round icon-size"> password </span>
+    <span id="seperator"></span>
+    <div class="input-container">
+      <p><%= form.label :password, class: "sub-title" %></p>
+      <%= form.password_field :password, class: "password" %>
+    </div>
+  </div>
+  <%= form.submit "Continue", id: "submit" %>
+<% end %>

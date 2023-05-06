@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
         # }
 
         @article = Article.new(article_params)
+        @article.user = User.first
         result = @article.save
         if result
             #flash is a hash that looks like this and is used to display messages to the user this message is shown in app/views/layouts/application.html.erb
@@ -81,6 +82,6 @@ class ArticlesController < ApplicationController
         end
 
         def article_params
-            params.require(:article).permit(:title, :description, :author)
+            params.require(:article).permit(:title, :description)
         end
 end
