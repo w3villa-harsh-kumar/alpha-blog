@@ -2,12 +2,14 @@ class UsersController < ApplicationController
     def new
         @user = User.new
     end
-
-    def Create
+    
+    def create
         @user = User.new(user_params)
-        if @user.save
-            flash[:notice] = "User was created successfully."
+        result = @user.save
+        if result
+            flash[:notice] = "Welcome to the Alpha Blog, #{user_params[:username]}!, you have successfully signed up."
             redirect_to @user
+            # debugger
         else
             return render(:new, status: :unprocessable_entity, locals: { user: @user }) unless result
         end

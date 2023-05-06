@@ -31,6 +31,7 @@ input:focus {
   border: none;
   background-color: var(--background);
   outline: 0;
+  width: 100%;
 }
 
 a {
@@ -156,6 +157,7 @@ a {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .email-input {
@@ -164,8 +166,8 @@ a {
   display: flex;
   padding: 1rem 3rem 1rem 3rem;
   gap: 1rem;
-  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .email-input:focus-within {
@@ -231,4 +233,8 @@ a {
   .email-input {
     padding: 1rem;
   }
+}
+
+.links-container{
+    margin-left: 1rem;
 }
