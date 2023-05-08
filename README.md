@@ -490,3 +490,42 @@ class Article < ApplicationRecord
   belongs_to :user
 end
 ```
+
+<!-- 
+@user.new_record? => this will return true if the user is not saved in the database yet.
+
+@user.save => this will save the user in the database.
+
+@user.save! => this will save the user in the database and raise an exception if there is an error.
+
+@user.update => this will update the user in the database.
+
+@user.update! => this will update the user in the database and raise an exception if there is an error.
+
+@user.destroy => this will destroy the user in the database.
+
+@user.destroy! => this will destroy the user in the database and raise an exception if there is an error.
+
+@user.valid? => this will return true if the user is valid.
+
+@user.invalid? => this will return true if the user is invalid.
+
+@user.errors => this will return the errors of the user.
+
+@user.errors.full_messages => this will return the full messages of the errors of the user.
+
+@user.errors.any? => this will return true if the user has any errors.
+
+@user.errors.count => this will return the number of errors of the user.
+
+@user.errors.details => this will return the details of the errors of the user.
+
+@user.errors.messages => this will return the messages of the errors of the user.
+
+@user.class => this will return the class of the user.
+
+@user.class.name => this will return the name of the class of the user.
+
+@user.class.superclass => this will return the superclass of the class of the user.
+
+ -->
