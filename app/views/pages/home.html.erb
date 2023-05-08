@@ -13,8 +13,9 @@ Alpha Blog is a Ruby on Rails application that allows users to create articles, 
     <p> You can also view a list of all articles, or view a single article. </p>
     <p> You can also view the About page. </p>
 </div>
+
 <div class="mt-4 d-flex gap-2 flex-column flex-md-row flex-lg-row" >
-<%= link_to 'Create a new Article', new_article_path, class: "btn btn-primary" %>
+<%= link_to 'Create a new Article',(logged_in? ? new_article_path : login_path), class: "btn btn-primary" %>
 <%= link_to 'List of all Articles', articles_path, class: "btn btn-primary" %>
 </div>
 </div>

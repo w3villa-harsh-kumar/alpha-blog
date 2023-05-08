@@ -4,6 +4,6 @@
     <p> This is the about page for the Alpha Blog application. </p>
 </div>
 <div class="mt-4 d-flex gap-2 flex-column flex-md-row flex-lg-row" >
-<%= link_to 'Create a new Article', new_article_path, class: "btn btn-primary" %>
+<%= link_to 'Create a new Article', (logged_in? ? new_article_path : login_path), class: "btn btn-primary" %>
 <%= link_to 'List of all Articles', articles_path, class: "btn btn-primary" %>
 </div>

@@ -2,9 +2,10 @@
 <% if @articles.empty? %>
   <p>There are no articles yet. Create one!</p>
 <% end %>
-
 <%= render "article" %>
-
+<div class="flickr_pagination mt-4">
+  <%= will_paginate @articles, :container => false %>
+</div>
 <div class="mt-4">
-  <%= link_to 'Create a new Article', new_article_path, class: "btn btn-primary" %>
+  <%= link_to 'Create a new Article', (logged_in? ? new_article_path : login_path), class: "btn btn-primary" %>
 </div>
