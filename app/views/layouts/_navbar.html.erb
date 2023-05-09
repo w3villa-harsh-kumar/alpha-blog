@@ -23,13 +23,33 @@
             <%= link_to 'About', about_path, class: "nav-link" %>
           <% end %>
         </li>
+        <li class="nav-item">
+          <% if current_page?(users_path) %>
+            <%= link_to 'Bloggers', users_path, class: "nav-link active" %>
+          <% else %>
+            <%= link_to 'Bloggers', users_path, class: "nav-link" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if current_page?(articles_path) %>
+            <%= link_to 'All Articles', articles_path, class: "nav-link active" %>
+          <% else %>
+            <%= link_to 'All Articles', articles_path, class: "nav-link" %>
+          <% end %>
+        </li>
       </ul>
-      <form class="d-flex" role="search">
+      <%# <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
-      </form>
-      <div class="links-container">
-          <%= link_to "Sign up", signup_path, class: "btn btn-outline-primary" %>
+      </form> %>
+      <div class="links-container d-flex justify-content-center align-items-center gap-2">
+        <% if logged_in? %>
+          <%= link_to (((current_user.username + " (Admin)") if current_user.usertype == "admin") || current_user.username + " (Blogger)"), current_user, class: "text-primary ms-1" %>
+          <%= button_to "Log out", logout_path, method: :delete, class: "btn btn-outline-primary ms-1" %>
+        <% else %>
+          <%= link_to "Sign up", signup_path, class: "btn btn-outline-primary ms-1" %>
+          <%= link_to "Log in", login_path, class: "btn btn-outline-primary ms-1" %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -490,3 +490,90 @@ class Article < ApplicationRecord
   belongs_to :user
 end
 ```
+
+<!-- 
+@user.new_record? => this will return true if the user is not saved in the database yet.
+
+@user.save => this will save the user in the database.
+
+@user.save! => this will save the user in the database and raise an exception if there is an error.
+
+@user.update => this will update the user in the database.
+
+@user.update! => this will update the user in the database and raise an exception if there is an error.
+
+@user.destroy => this will destroy the user in the database.
+
+@user.destroy! => this will destroy the user in the database and raise an exception if there is an error.
+
+@user.valid? => this will return true if the user is valid.
+
+@user.invalid? => this will return true if the user is invalid.
+
+@user.errors => this will return the errors of the user.
+
+@user.errors.full_messages => this will return the full messages of the errors of the user.
+
+@user.errors.any? => this will return true if the user has any errors.
+
+@user.errors.count => this will return the number of errors of the user.
+
+@user.errors.details => this will return the details of the errors of the user.
+
+@user.errors.messages => this will return the messages of the errors of the user.
+
+@user.class => this will return the class of the user.
+
+@user.class.name => this will return the name of the class of the user.
+
+@user.class.superclass => this will return the superclass of the class of the user.
+
+ -->
+
+### 29. What is session in Rails?
+Session is a way to store data in the browser. It is used to store data that is needed for the current session. For example, if you want to store the current user's id in the session, you can use the following code:
+```
+session[:user_id] = @user.id
+```
+
+### 30. What is the use of session in Rails?
+1. Session is used to store data in the browser.
+2. Session is used to store data that is needed for the current session.
+3. Session is used to store data that is needed for the current user.
+4. Session is used to store data that is needed for the current request.
+
+
+### 31. What is flash in Rails?
+Flash is a way to store data in the browser. It is used to store data that is needed for the next request. For example, if you want to store a message in the flash, you can use the following code:
+```
+flash[:notice] = "Your account has been created successfully."
+```
+
+### 32. What is memorization in Rails?
+With memorization, you can cache the result of a method call. For example, if you have a method that returns the current user, you can cache the result of the method call by using the following code:
+```
+def current_user
+  @current_user ||= User.find_by(id: session[:user_id])
+end
+```
+Here ||= is used to cache the result of the method call.
+
+### 33. What is the use of memorization in Rails?
+1. Memorization is used to cache the result of a method call.
+
+
+### 34. What is the difference between session and flash in Rails?
+Session is used to store data in the browser. It is used to store data that is needed for the current session. Flash is used to store data in the browser. It is used to store data that is needed for the next request.
+
+### 35. What is the difference between session and memorization in Rails?
+Session is used to store data in the browser. It is used to store data that is needed for the current session. Memorization is used to cache the result of a method call.
+
+### 36. Why to use !! in Rails?
+!! is used to convert a value to a boolean. For example, if you have a value that is either true or false, you can use the following code to convert it to a boolean:
+```
+!!value
+```
+
+
+
+

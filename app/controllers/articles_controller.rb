@@ -1,13 +1,13 @@
 class ArticlesController < ApplicationController
     before_action :get_article_by_id, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:show, :index]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     
-
     def show
-        # debugger
     end
 
     def index
-        @articles = Article.all
+        @articles = Article.paginate(page: params[:page], per_page: 6)
     end
 
     def new 
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
         # }
 
         @article = Article.new(article_params)
-        @article.user = User.first
+        @article.user = current_user
         result = @article.save
         if result
             #flash is a hash that looks like this and is used to display messages to the user this message is shown in app/views/layouts/application.html.erb
@@ -83,5 +83,12 @@ class ArticlesController < ApplicationController
 
         def article_params
             params.require(:article).permit(:title, :description)
+        end
+
+        def require_same_user
+            if current_user != @article.user && current_user.usertype != "admin"
+                flash[:alert] = "You can only edit or delete your own article."
+                redirect_to @article
+            end
         end
 end

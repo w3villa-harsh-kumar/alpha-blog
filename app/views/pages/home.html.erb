@@ -1,6 +1,6 @@
 <div class="d-flex flex-column-reverse flex-md-row">
 <div class="home-left-container">
-<h1>Welcome to Alpha Blog</h1>
+<h1>Welcome to <span class="text-primary">Alpha Blog</span> </h1>
 
 <div class="text mb-5">
 Alpha Blog is a Ruby on Rails application that allows users to create articles, edit articles, and delete articles. This application was created as part of the <a href="https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/">Complete Ruby on Rails Developer Course</a> on Udemy. It is developed by Harsh Kumar.
@@ -13,8 +13,9 @@ Alpha Blog is a Ruby on Rails application that allows users to create articles, 
     <p> You can also view a list of all articles, or view a single article. </p>
     <p> You can also view the About page. </p>
 </div>
+
 <div class="mt-4 d-flex gap-2 flex-column flex-md-row flex-lg-row" >
-<%= link_to 'Create a new Article', new_article_path, class: "btn btn-primary" %>
+<%= link_to 'Create a new Article',(logged_in? ? new_article_path : login_path), class: "btn btn-primary" %>
 <%= link_to 'List of all Articles', articles_path, class: "btn btn-primary" %>
 </div>
 </div>

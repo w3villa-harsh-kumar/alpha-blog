@@ -7,9 +7,13 @@
     </div>
     <div class="form-label">
         <%= form.label :description, "Description", class: "form-label" %>
-        <%= form.text_area :description, class: "form-control" %>
+        <%= form.text_area :description, class: "form-control",
+            rows: 10, cols: 10
+        %>
     </div>
     <div class="form-label">
-        <%= form.submit "Submit", class: "btn btn-primary" %>
+        <%= form.submit "Submit", class: "btn btn-outline-primary",
+         style: "width: 10%; margin-top: 20px;"
+        %>
     </div>
 <% end %>
