@@ -13,14 +13,19 @@
         <div class="card-body text-center">
           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px; border: 5px solid whitesmoke;">
-          <h5 class="my-3"><%= user.username%></h5>
+          <h5 class="my-3"><%= user.username %><% if current_user.usertype == "admin" %> (<%= user.usertype.capitalize %>)<% end %></h5>
           <p class="text-muted mb-1">Full Stack Developer</p>
           <p class="text-muted mb-4"><%= user.email %></p>
           <div class="d-flex justify-content-center mb-2">
-            <%= link_to 'View Profile', user_path(user), class: "btn btn-primary ms-1" %>
-            <% if logged_in? && current_user == user %>
+            <%= link_to 'View Profile', user_path(user), class: "btn btn-outline-success ms-1" %>
+            <% if logged_in? %>
+            <% if current_user == user  %>
             <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-primary ms-1" %>
             <% end %>
+            <% if current_user.usertype == "admin" %>
+            <%= button_to "Delete Account", user_path(user), method: :delete, data: { turbo_confirm: "Are you sure you want to delete your account?" }, class: "btn btn-outline-danger ms-1" %>
+            <%end%>
+            <%end%>
           </div>
         </div>
       </div>

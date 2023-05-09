@@ -1,7 +1,4 @@
 <h1>All Articles</h1>
-<% if @articles.empty? %>
-  <p>There are no articles yet. Create one!</p>
-<% end %>
 <%= render "article" %>
 <div class="flickr_pagination mt-4">
   <%= will_paginate @articles, :container => false %>
