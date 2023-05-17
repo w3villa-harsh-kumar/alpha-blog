@@ -37,6 +37,33 @@
             <%= link_to 'All Articles', articles_path, class: "nav-link" %>
           <% end %>
         </li>
+        <li class="nav-item">
+          <% if logged_in? %>
+            <% if current_user.usertype == "admin" %>
+                <div class="d-flex">
+                <% if current_page?(categories_path) %>
+                <%= link_to 'All Categories', categories_path, class: "nav-link active" %>
+                <% else %>
+                <%= link_to 'All Categories', categories_path, class: "nav-link" %>
+                <% end %>
+
+                <% if current_page?(new_category_path) %>
+                <%= link_to 'New Category', new_category_path, class: "nav-link active" %>
+                <% else %>
+                <%= link_to 'New Category', new_category_path, class: "nav-link" %>
+                <% end %>
+                </div>
+            <% end %>
+
+            <% if current_user.usertype != "admin" %>
+                <% if current_page?(categories_path) %>
+                <%= link_to 'All Categories', categories_path, class: "nav-link active" %>
+                <% else %>
+                <%= link_to 'All Categories', categories_path, class: "nav-link" %>
+                <%end%>
+            <%end%>
+          <% end %>
+        </li>
       </ul>
       <%# <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

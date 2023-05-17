@@ -1,0 +1,18 @@
+<h1 class="text-center mt-4">Category: <%= @category.name %> <span style="font-size: 25px;"> (<%= link_to "Edit", edit_category_path(@category)%>)</span></h1>
+
+  <%# Show all user article %>
+  <% if logged_in? && (current_user == @user || current_user.usertype == "admin") && @category.articles.empty? %>
+    <div class="col-lg-12 text-center">
+      <h3>Oopss! You have not created any article yet.</h3>
+      <%= link_to "Create one now!", new_article_path, class: "btn btn-primary" %>
+    </div>
+  <% elsif @category.articles.empty? %>
+    <%= render "shared/articles_not_found" %>
+  <%else%>
+    <h3 class="text-center mb-4">Articles</h3>
+    <%= render "articles/article", obj: @category.articles %>
+  <% end %>
+</div>
+<div class="flickr_pagination mt-4">
+  <%= will_paginate @articles, :container => false %>
+</div>

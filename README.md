@@ -574,6 +574,39 @@ Session is used to store data in the browser. It is used to store data that is n
 !!value
 ```
 
+### 37. what is test in rails?
+Test is a way to test your code. It is used to make sure that your code is working as expected. For example, if you want to test a method that returns the current user, you can use the following code:
+```
+def current_user
+  @current_user ||= User.find_by(id: session[:user_id])
+end
+```
 
+### 38. What is test driven development in Rails?
+Test driven development is a way to develop software. It is used to write tests before writing code. For example, if you want to write a test for a method that returns the current user, you can use the following code:
+```
+def current_user
+  @current_user ||= User.find_by(id: session[:user_id])
+end
+```
 
+### 39. Many to many association with through in Rails?
+Many to many association with through is a way to connect two models together. For example, if you have a User model and a Article model, you can connect them together by adding a has_many :articles to the User model and a has_many :users to the Article model.
+e.g.
+```
+class User < ApplicationRecord
+  has_many :user_articles
+  has_many :users, through: :articles
+end
+
+class UserArticle < ApplicationRecord
+  belongs_to :user
+  belongs_to :article
+end
+
+class Article < ApplicationRecord
+  has_many :user_articles
+  has_many :articles, through: :users
+end
+```
 

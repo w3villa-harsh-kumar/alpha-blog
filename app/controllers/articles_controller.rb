@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        # debugger
+        debugger
         #params.require(:article) is a hash that looks like this:
         # {
         #     "title" => "My Article",
@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
         end
 
         def article_params
-            params.require(:article).permit(:title, :description)
+            params.require(:article).permit(:title, :description, category_ids: [])
         end
 
         def require_same_user

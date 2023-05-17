@@ -1,0 +1,12 @@
+<%= render "shared/errors", data: @category %>
+<%= form_with(model:@category, local: true, class: "my-form") do |form| %>
+  <div class="email-input">
+    <span class="material-icons-round icon-size"> category </span>
+    <span id="seperator"></span>
+    <div class="input-container">
+      <p><%= form.label :name, "Category Name", class: "sub-title" %></p>
+      <%= form.text_field :name, class: "name" %>
+    </div>
+  </div>
+  <%= form.submit "Continue", id: "submit" %>
+<% end %>

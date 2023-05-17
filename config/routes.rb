@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # Defines the users path route ("/users")
   resources :users, except: [:new] # => Restful Routes
 
+  # Categories routes
+  resources :categories, except: [:destroy] # => except: [:destroy] => because we don't want to allow users to delete categories from the front end
+
   # 404 page
   get "*path", to: "pages#not_found", constraints: lambda { |req| req.path.exclude? "rails/active_storage" }
 end
