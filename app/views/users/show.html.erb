@@ -42,7 +42,7 @@
     <%= render "shared/articles_not_found" %>
   <%else%>
     <h3 class="text-center mb-4">Articles</h3>
-    <%= render "articles/article" %>
+    <%= render "articles/article", obj: @user.articles %>
   <% end %>
 </div>
 <div class="flickr_pagination mt-4">

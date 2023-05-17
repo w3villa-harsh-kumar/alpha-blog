@@ -239,3 +239,13 @@ a {
 .links-container{
     margin-left: 1rem;
 }
+
+.custom-select{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: solid var(--secondary) 2px;
+    border-radius: 12px;
+    width: 100%;
+}

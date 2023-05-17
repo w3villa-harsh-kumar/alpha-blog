@@ -2,6 +2,10 @@
 
 <div class="card shadow">
   <div class="card-body">
+    <%# Categories Badge %>
+    <div class="d-flex flex-wrap gap-2 mb-2">
+    <%= render @article.categories %>
+    </div>
     <h5 class="card-title"><%= @article.title %></h5>
     <p class="card-text"><%= @article.description %></p>
     <p class="card-text"><%= @article.user.username %></p>

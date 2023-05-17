@@ -1,19 +1,23 @@
 <%= render "shared/errors", data: @article %>
-
 <%= form_with(model: @article, local: true, class: "form") do |form| %>
-    <div class="form-label">
-        <%= form.label :title, "Title", class: "form-label" %>
-        <%= form.text_field :title, class: "form-control" %>
-    </div>
-    <div class="form-label">
-        <%= form.label :description, "Description", class: "form-label" %>
-        <%= form.text_area :description, class: "form-control",
-            rows: 10, cols: 10
-        %>
-    </div>
-    <div class="form-label">
-        <%= form.submit "Submit", class: "btn btn-outline-primary",
+  <div class="form-label">
+    <%= form.label :title, "Title", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-label">
+    <%= form.label :description, "Description", class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 10, cols: 10%>
+  </div>
+
+  <%# User can select multiple categoriesin bubble fo %>
+  <div class="form-label">
+    <%= form.label :category_ids, "Categories", class: "form-label" %> (To select multiple categories, hold down the Ctrl (windows) / Command (Mac) button while clicking on the categories)
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {prompt: "You can select multiple categories"}, {multiple: true, size:8, class: "form-control custom-select rounded"} %>
+  </div>
+  
+  <div class="form-label">
+    <%= form.submit "Submit", class: "btn btn-outline-primary",
          style: "width: 10%; margin-top: 20px;"
         %>
-    </div>
+  </div>
 <% end %>

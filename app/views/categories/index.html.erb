@@ -1,0 +1,24 @@
+<h1>Categories</h1>
+
+<% if @categories.empty? %>
+  <p
+  class="text-center"
+  >There are no categories yet. <%= link_to 'Create one!', new_category_path %></p>
+<% end %>
+
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-lg-4">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h5 class="my-3"><%= link_to category.name, category_path(category) %></h5>
+            <p class="text-muted"><%= pluralize(category.articles.count, "article") %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="flickr_pagination mt-4">
+  <%= will_paginate @categories, :container => false %>
+</div>

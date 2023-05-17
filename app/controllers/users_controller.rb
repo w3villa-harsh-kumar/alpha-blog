@@ -76,3 +76,9 @@ class UsersController < ApplicationController
     end
 
 end
+
+# return render(:edit, status: :unprocessable_entity, locals: { user: @user }) unless result
+# Here we are rendering the edit.html.erb view file and passing in the user object as a local variable for the edit view file to use
+# The status: :unprocessable_entity is the HTTP status code that will be returned to the browser
+# The status: :unprocessable_entity is the HTTP status code for an unprocessable entity (422)
+# An unprocessable entity is an entity that cannot be processed by the server because it is not in the correct format
