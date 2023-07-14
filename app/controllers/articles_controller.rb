@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        debugger
+        #debugger
         #params.require(:article) is a hash that looks like this:
         # {
         #     "title" => "My Article",
@@ -92,3 +92,5 @@ class ArticlesController < ApplicationController
             end
         end
 end
+
+

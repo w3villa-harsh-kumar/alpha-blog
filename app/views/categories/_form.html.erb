@@ -1,5 +1,5 @@
 <%= render "shared/errors", data: @category %>
-<%= form_with(model:@category, local: true, class: "my-form") do |form| %>
+<%= form_with(model:@category, remote: true, class: "my-form") do |form| %>
   <div class="email-input">
     <span class="material-icons-round icon-size"> category </span>
     <span id="seperator"></span>
